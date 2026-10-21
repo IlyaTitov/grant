@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тренажер для каротидной эндартерэктомии СТ-КЭ-01</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #0052b4;
+      --primary-dark: #003f8a;
+      --text: #263445;
+      --muted: #5b6573;
+      --border: #e6eaf0;
+    }
+
+    body {
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: #fff;
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--border);
+      background: #fff;
+    }
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 34px;
+    }
+    .logo {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.3px;
+      text-decoration: none;
+    }
+    .badge {
+      background: #eef0f3;
+      color: var(--text);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 3px;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(90deg, #ffffff 0%, #f6f9fd 50%, #eef4fb 100%);
+      padding: clamp(20px, 4vh, 44px) 0;
+    }
+    .hero .container {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .hero h1 {
+      font-size: 32px;
+      line-height: 1.25;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 700px;
+      margin-bottom: 28px;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      font-size: 12px;
+      padding: 13px 23px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: var(--primary-dark); }
+
+    .photo-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 6px 24px rgba(30, 60, 110, 0.10);
+      height: clamp(180px, 30vh, 236px);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 65%;
+    }
+    .photo-placeholder {
+      color: #a8b0bb;
+      font-size: 11px;
+    }
+    .photo-caption {
+      position: absolute;
+      bottom: 12px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: #b0b7c1;
+      font-size: 7px;
+    }
+
+    /* Features */
+    .features {
+      padding: clamp(16px, 3vh, 32px) 0 clamp(16px, 3vh, 28px);
+    }
+    .features .container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .feature {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 26px 26px 28px;
+    }
+    .feature h3 {
+      color: var(--primary);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .feature p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border);
+      background: #f7f9fc;
+      padding: 14px 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    /* Contacts */
+    .contacts {
+      padding: clamp(24px, 4vh, 44px) 0;
+      background: #fff;
+    }
+    .contacts h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 24px;
+    }
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .contact-item {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 22px;
+    }
+    .contact-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .contact-value {
+      display: block;
+      font-size: 15px;
+      color: var(--text);
+    }
+    .contact-value a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-value a:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .footer-support {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .footer-support span {
+      max-width: 700px;
+    }
+    .footer-logo {
+      height: 50px;
+      width: auto;
+      flex-shrink: 0;
+    }
+    footer strong { color: var(--text); }
+
+    @media (max-width: 900px) {
+      .hero .container { grid-template-columns: 1fr; gap: 32px; }
+      .features .container { grid-template-columns: repeat(2, 1fr); }
+      .contacts-grid { grid-template-columns: 1fr; }
+      .footer-support { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 560px) {
+      .hero h1 { font-size: 24px; }
+      .features .container { grid-template-columns: 1fr; }
+      .contacts { padding-top: 20px; padding-bottom: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <a href="#" class="logo">Тренажер Ланцент</a>
+      <span class="badge">СТ-КЭ-01 РЭ</span>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div>
+        <h1>Тренажер для каротидной эндартерэктомии</h1>
+        <p>Профессиональная система для отработки навыков сосудистого шва и эндартерэктомии с активной циркуляцией имитатора крови.</p>
+        <a href="mailto:info@example.com?subject=Запрос КП: тренажер СТ-КЭ-01" class="btn">Запросить КП</a>
+      </div>
+      <div class="photo-card">
+        <img src="images/2.jpg" alt="Тренажер Ланцент СТ-КЭ-01">
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="container">
+      <div class="feature">
+        <h3>Раздельное питание</h3>
+        <p>Стабильная работа логики Arduino от сети через Type-C и мощный поток насосов от автономных батарей.</p>
+      </div>
+      <div class="feature">
+        <h3>Трехотсечный блок</h3>
+        <p>Изолированные отсеки для электроники, гидравлики и элементов питания для максимальной безопасности.</p>
+      </div>
+      <div class="feature">
+        <h3>Биомиметичный сосуд</h3>
+        <p>Сменный модуль имитирует интиму и бляшку, обеспечивая реалистичное сопротивление при эндартерэктомии.</p>
+      </div>
+      <div class="feature">
+        <h3>Контроль герметичности</h3>
+        <p>Двухконтурная система создает пульсирующее давление для мгновенной проверки качества сосудистого шва.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacts -->
+  <section class="contacts">
+    <div class="container">
+      <h2>Контакты</h2>
+      <div class="contacts-grid">
+        <div class="contact-item">
+          <span class="contact-label">Компания</span>
+          <span class="contact-value">ООО «НЕЙРОН»</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Юридический адрес</span>
+          <span class="contact-value">г. Москва, ул. Домостроительная, д. 14, кв. 114</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Email</span>
+          <span class="contact-value"><a href="mailto:timurabzalov2002@mail.ru">timurabzalov2002@mail.ru</a></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Телефон</span>
+          <span class="contact-value"><a href="tel:89039463823">8 (903) 946-38-23</a></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-support">
+        <span>Проект создан при поддержке Федерального государственного бюджетного учреждения «Фонд содействия развитию малых форм предприятий в научно-технической сфере» в рамках программы «Студенческий стартап» федерального проекта «Платформа университетского технологического предпринимательства»</span>
+        <img src="images/head_logo_fasie.png" alt="Логотип Фонда содействия инновациям" class="footer-logo">
+      </div>
+      <span>&copy; 2026 Тренажер Ланцент</span>
+    </div>
+  </footer>
+
+</body>
+</html>
